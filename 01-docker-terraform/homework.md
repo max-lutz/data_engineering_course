@@ -11,41 +11,44 @@ Answer 15612
 Answer 2019-09-26
 
 query:
-SELECT extract(epoch from CAST(g.lpep_dropoff_datetime AS TIME) - 
-			   CAST(g.lpep_pickup_datetime AS TIME)) as diff,
-	g.lpep_pickup_datetime, g.lpep_dropoff_datetime,
-	g.trip_distance, g.fare_amount, g.tolls_amount
-FROM public.green_taxi_data as g
-ORDER BY diff DESC
-LIMIT 100;
+
+	SELECT extract(epoch from CAST(g.lpep_dropoff_datetime AS TIME) - 
+				CAST(g.lpep_pickup_datetime AS TIME)) as diff,
+		g.lpep_pickup_datetime, g.lpep_dropoff_datetime,
+		g.trip_distance, g.fare_amount, g.tolls_amount
+	FROM public.green_taxi_data as g
+	ORDER BY diff DESC
+	LIMIT 100;
 
 # Question 5. Three biggest pick up Boroughs
 Answer: "Brooklyn" "Manhattan" "Queens"
 
 query:
-SELECT z."Borough", round(CAST(sum(g.total_amount) AS numeric), 0) as sum_total_amount
-FROM public.green_taxi_data as g
-LEFT JOIN public.zones as z
-ON g."PULocationID" = z."LocationID"
-WHERE CAST(g.lpep_pickup_datetime AS DATE) = '2019-09-18'
-	AND z."Borough" != 'Unknown'
-GROUP BY z."Borough"
-HAVING round(CAST(sum(g.total_amount) AS numeric), 0) > 50000
-ORDER BY sum_total_amount DESC;
+
+	SELECT z."Borough", round(CAST(sum(g.total_amount) AS numeric), 0) as sum_total_amount
+	FROM public.green_taxi_data as g
+	LEFT JOIN public.zones as z
+	ON g."PULocationID" = z."LocationID"
+	WHERE CAST(g.lpep_pickup_datetime AS DATE) = '2019-09-18'
+		AND z."Borough" != 'Unknown'
+	GROUP BY z."Borough"
+	HAVING round(CAST(sum(g.total_amount) AS numeric), 0) > 50000
+	ORDER BY sum_total_amount DESC;
 
 # Question 6. Largest tip
 Answer: Kips Bay  (not in the possible answers...)
 
 query:
-SELECT puz."Zone" as puz, doz."Zone" as poz, g.tip_amount, g.lpep_pickup_datetime
-FROM public.green_taxi_data as g
-LEFT JOIN public.zones as puz
-ON g."PULocationID" = puz."LocationID"
-LEFT JOIN public.zones as doz
-ON g."DOLocationID" = doz."LocationID"
-WHERE puz."Zone" = 'Astoria'
-ORDER BY g.tip_amount DESC
-LIMIT 100;
+
+	SELECT puz."Zone" as puz, doz."Zone" as poz, g.tip_amount, g.lpep_pickup_datetime
+	FROM public.green_taxi_data as g
+	LEFT JOIN public.zones as puz
+	ON g."PULocationID" = puz."LocationID"
+	LEFT JOIN public.zones as doz
+	ON g."DOLocationID" = doz."LocationID"
+	WHERE puz."Zone" = 'Astoria'
+	ORDER BY g.tip_amount DESC
+	LIMIT 100;
 
 # Question 7. Creating Resources
 
