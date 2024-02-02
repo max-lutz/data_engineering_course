@@ -1,0 +1,10 @@
+version: 2
+
+sources:
+  - name: staging
+    database: data-engineering-course-411410
+    schema: dbt_demo
+
+    tables:
+      - name: green_taxi
+      - name: yellow_taxi
