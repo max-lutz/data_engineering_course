@@ -41,7 +41,7 @@ Answer: False
     CREATE OR REPLACE EXTERNAL TABLE `homework.green_taxi_external`
     OPTIONS (
     format = 'PARQUET',
-    uris = ['gs://data-engineering-course-411410-data-warehouse-eu/green_tripdata_2022-*.parquet']
+    uris = ['gs://data-engineering-course-...-data-warehouse-eu/green_tripdata_2022-*.parquet']
     );
 
 ---
