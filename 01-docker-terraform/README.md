@@ -2,6 +2,39 @@
 
 ## Docker
 
+Use docker-compose to setup a postgres database and a pgadmin service.
+Use docker to run a python script to load data into the postgres database.
+
+Features:
+- Run three docker containers at the same time
+- Connect the containers via a network
+- Persist the data when shutting down the containers using volumes
+
+Results:
+```
+root@localhost:ny_taxi> SELECT COUNT(1) FROM test
++---------+
+| count   |
+|---------|
+| 7275986 |
++---------+
+SELECT 1
+Time: 0.794s
+```
+
+
+#### Useful commands
+    # Build docker image
+    docker build -t nyc_taxi_ingest:1.0 .
+
+    # Check that postgres is running:
+    pgcli -h localhost -U root -d ny_taxi
+
+    # Ingest one month of data
+    docker run --network pg_network -e PYTHONUNBUFFERED=1 nyc_taxi_ingest:1.0 --user root --password root --host pgdatabase --port 5432 --db ny_taxi --table_name test --url https://github.com/DataTalksClub/nyc-tlc-data/releases/download/yellow/yellow_tripdata_2020-04.csv.gz
+
+
+
 
 
 ## Terraform:

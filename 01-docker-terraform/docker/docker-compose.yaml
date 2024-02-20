@@ -1,0 +1,29 @@
+services:
+  pgdatabase:
+    image: postgres:13
+    environment:
+      - POSTGRES_USER=root
+      - POSTGRES_PASSWORD=root
+      - POSTGRES_DB=ny_taxi
+    networks:
+      - pg_network
+    volumes:
+      - "./docker_compose_data/ny_taxi_postgres_data:/var/lib/postgresql/data:rw"
+    ports:
+      - "5432:5432"
+  pgadmin:
+    image: dpage/pgadmin4
+    environment:
+      - PGADMIN_DEFAULT_EMAIL=admin@admin.com
+      - PGADMIN_DEFAULT_PASSWORD=root
+    networks:
+      - pg_network
+    ports:
+      - "8080:80"
+    volumes: 
+      - "./docker_compose_data/pgadmin:/var/lib/pgadmin:rw"
+    user: "${UID}:${GID}"
+
+networks:
+  pg_network:
+    name: "pg_network"
