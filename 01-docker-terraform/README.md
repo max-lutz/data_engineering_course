@@ -43,19 +43,16 @@ Here we set up a bigquery dataset and a google cloud storage bucket using terraf
 
 
 terraform commands used:
-	terraform init
-	terraform plan
-	terraform apply
-	terraform destroy
+```
+terraform init
+terraform plan
+terraform apply
+terraform destroy
+```
 
 #### terraform plan
 
-(base) max_lutz@data-engineering-course:~/data_engineering_course/01-docker-terraform/terraform$ terraform plan
-
-Terraform used the selected providers to generate the following execution plan. Resource actions are
-indicated with the following symbols:
-  + create
-
+```
 Terraform will perform the following actions:
 
   # google_bigquery_dataset.demo_dataset will be created
@@ -108,24 +105,27 @@ Terraform will perform the following actions:
     }
 
 Plan: 2 to add, 0 to change, 0 to destroy.
+```
 
 
 #### terraform apply
 
+```
 google_bigquery_dataset.demo_dataset: Creating...
 google_storage_bucket.demo-bucket: Creating...
 google_storage_bucket.demo-bucket: Creation complete after 1s [id=data-engineering-course-411410-terra-bucket]
 google_bigquery_dataset.demo_dataset: Creation complete after 1s [id=projects/data-engineering-course-411410/datasets/example_dataset]
 
 Apply complete! Resources: 2 added, 0 changed, 0 destroyed.
-
+```
 
 #### terraform destroy
 
+```
 google_bigquery_dataset.demo_dataset: Destroying... [id=projects/data-engineering-course-411410/datasets/example_dataset]
 google_storage_bucket.demo-bucket: Destroying... [id=data-engineering-course-411410-terra-bucket]
 google_bigquery_dataset.demo_dataset: Destruction complete after 1s
 google_storage_bucket.demo-bucket: Destruction complete after 2s
 
 Destroy complete! Resources: 2 destroyed.
-
+```
