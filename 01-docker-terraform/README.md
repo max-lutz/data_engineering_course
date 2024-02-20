@@ -1,6 +1,6 @@
-# Week 1 Docker and terraform
+# Week 1: Docker and terraform
 
-## Docker
+## Docker:
 
 Use docker-compose to setup a postgres database and a pgadmin service.
 Use docker to run a python script to load data into the postgres database.
@@ -10,7 +10,7 @@ Features:
 - Connect the containers via a network
 - Persist the data when shutting down the containers using volumes
 
-Results:
+#### Results:
 ```
 root@localhost:ny_taxi> SELECT COUNT(1) FROM test
 +---------+

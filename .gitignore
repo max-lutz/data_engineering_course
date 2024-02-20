@@ -165,3 +165,11 @@ target/
 dbt_packages/
 logs/
 # end dbt Cloud content
+
+
+*.terraform
+*.tfstate
+*.backup
+*.hcl
+
+gcp_key.json
