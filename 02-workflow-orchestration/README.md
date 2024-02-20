@@ -12,6 +12,7 @@ Package the mage environment in docker for ease of use.
 
 #### Results:
 
+![etl_pipelines](https://github.com/max-lutz/data_engineering_course/assets/39080117/ff8a07f4-ff33-4b8f-9d81-2d3da9310293)
 
 
 
