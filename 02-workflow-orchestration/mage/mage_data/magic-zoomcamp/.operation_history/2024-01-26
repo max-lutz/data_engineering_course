@@ -1,0 +1,2 @@
+{"operation": "create", "resource": {"type": "pipeline", "uuid": "exciting_merchant"}, "timestamp": 1706289541, "user": null}
+{"operation": "create", "resource": {"type": "pipeline", "uuid": "api_to_gcs_copy"}, "timestamp": 1706291022, "user": null}
