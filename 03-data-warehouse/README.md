@@ -1,4 +1,4 @@
-# Week 2: Data warehouse
+# Week 3: Data warehouse
 
 ## BigQuery:
 
