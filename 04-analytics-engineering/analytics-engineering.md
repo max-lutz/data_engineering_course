@@ -78,5 +78,9 @@ You can schedule jobs to run in prod.
 
 ## dbt CLI
 
-Install packages `dbt deps`
-`dbt run --select filename`
+```
+dbt deps     # Install packages
+dbt build
+dbt test
+dbt run
+```
