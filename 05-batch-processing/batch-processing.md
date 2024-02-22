@@ -54,3 +54,29 @@ Actions (show(), take(), head()) trigger the transformation to be run.
 
 
 You can define functions in python for pyspark and test them and version control them. It's better than trying to do this in SQL.
+
+## Spark internals
+
+#### Spark cluster:
+- master node and multiple executor nodes
+- jobs are send to master and then executors
+
+Now data is stored on the cloud (S3 or GCS), Hadoop and HDFS are less popular now.
+
+#### Spark group by
+
+- each executor receives a partition of the data
+- it applies the filtering and group by on this data
+- the data of each executor is reshuffled: data with the same key are sent to the same node (the key corresponds to the the groupby columns)
+- these executor then apply another group by to combine the records per key.
+
+#### Spark joins
+
+Both tables are large: Sort merge join.
+- each executor gets a partition of a large table
+- joins start with a reshuffle and then a reduce operation.
+
+One table is large and the other is small: broadcast exchange
+- each executor gets a copy of the small table and a partition of the big table
+
+## RDDs: resilient distributed datasets
