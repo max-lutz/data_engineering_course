@@ -80,3 +80,8 @@ One table is large and the other is small: broadcast exchange
 - each executor gets a copy of the small table and a partition of the big table
 
 ## RDDs: resilient distributed datasets
+
+Dataframes are built on top of RDDs.
+Dataframes have schema.
+
+## How tu run Spark in the cloud?
